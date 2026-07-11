@@ -48,7 +48,7 @@ export TELEGRAM_CHAT_ID="987654321"
 ### Ejecución normal (lo que corre cada día en producción)
 
 ```bash
-python scraper.py
+python script.py
 ```
 
 Busca viviendas en Madrid y vehículos en toda España que terminen en las próximas 24h, y envía **dos mensajes** de Telegram (uno por bloque).
@@ -60,15 +60,15 @@ Para comprobar que el scraping y el formateo funcionan bien, sin depender de que
 ```bash
 # Imprime por consola los 10 resultados más recientes de cada bloque,
 # sin filtrar por fecha de fin
-python scraper.py --test
+python script.py --test
 
 # Igual, pero además los envía a Telegram para ver cómo queda el formato ahí
-python scraper.py --test --telegram
+python script.py --test --telegram
 ```
 
 ## ⚙️ Despliegue automático (GitHub Actions)
 
-El repo incluye un workflow (`.github/workflows/subastas.yml`) que ejecuta `scraper.py` todos los días automáticamente, gratis, sin necesidad de servidor.
+El repo incluye un workflow (`.github/workflows/subastas.yml`) que ejecuta `script.py` todos los días automáticamente, gratis, sin necesidad de servidor.
 
 ### 1. Configurar los secrets
 
@@ -97,7 +97,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install -r requirements.txt
-      - run: python scraper.py
+      - run: python script.py
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -113,7 +113,7 @@ Ve a la pestaña **Actions** del repo → selecciona el workflow **BOE Subastas 
 
 ```
 .
-├── scraper.py              # Script principal
+├── script.py              # Script principal
 ├── requirements.txt
 ├── README.md
 └── .github/
