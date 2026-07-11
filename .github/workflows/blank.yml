@@ -1,7 +1,7 @@
 name: BOE Subastas Diario
 on:
   schedule:
-    - cron: '42 15 * * *'   # 7:00 UTC = 9:00 en Madrid en invierno, 8:00 (CET/CEST ojo con el cambio de hora)
+    - cron: '0 16 * * *'   # 16:00 UTC = 18:00 en Madrid en invierno, 17:00 (CET/CEST ojo con el cambio de hora)
   workflow_dispatch:
 
 jobs:
